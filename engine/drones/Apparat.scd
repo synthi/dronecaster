@@ -25,7 +25,7 @@ Edited by Josue Arias for Dronecaster synthdef
 	vibrato = freq * LFNoise2.ar(vrate).range(1/(1 + vdepth), (1 + vdepth));
 
 	snd = Clip.ar(LFTri.ar(vibrato), -1 * sineClip, sineClip).softclip;
-	snd = ((snd * amp) + noise) * env;
+	snd = ((snd * amp) + noise);
 	Out.ar(out, Pan2.ar(snd, pan));
 
 },
