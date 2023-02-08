@@ -7,7 +7,7 @@ Modified by Bruno Ruviaro and Josh Mitchell 8/19.
 Edited by Josue Arias for Dronecaster synthdef
 */
 
-SynthDef(\vintageSine, {
+{
 	arg
 	//Standard Definitions
 	amp = 0.2, freq = 440, pan = 0,
