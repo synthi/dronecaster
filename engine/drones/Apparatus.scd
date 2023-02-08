@@ -1,18 +1,16 @@
-/* Retrieved from
-http://sccode.org/1-5aD
+/* Apparatus drone by Josue AriasO
 Original by Zé Craum
-Crude simulation of old sinusoidal generators - with random vibrato and a high noise floor.
+Crude simulation of old sinusoidal generators with random vibrato and a high noise floor.
 50hz mains hum emulation and slightly distorted sine (a clipped triangle wave) added by Josh Mitchell.
 Modified by Bruno Ruviaro and Josh Mitchell 8/19.
-Edited by Josue Arias for Dronecaster synthdef
 */
 
 {
 	arg hz = 128, amp = 0.5, out = 0,
 	//Noise Arguments (mainsDepth is 0 to 1)
-	noiseAmp = 0.06, mainsDepth = 0.1, mainsHz = 50,
+	noiseAmp = 0.05, mainsDepth = 0.2, mainsHz = 50,
 	//Sine Arguments
-	vrate = 2, vdepth = 0.005, sineClip = 0.825;
+	vrate = 2, vdepth = 0.01, sineClip = 0.825;
 
 	var noise, snd, vibrato;
 
@@ -25,6 +23,7 @@ Edited by Josue Arias for Dronecaster synthdef
 
 	snd = Clip.ar(LFTri.ar(vibrato), -1 * sineClip, sineClip).softclip;
 	snd = ((snd * amp) + noise);
-	Out.ar(out, snd);
+	snd=Pan2.ar(snd,0)
+	//Out.ar(out, snd).dup;
 
 }
