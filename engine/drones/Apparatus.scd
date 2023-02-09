@@ -13,7 +13,7 @@ Original parts by Zé Craum, modified by Bruno Ruviaro, Josh Mitchell and Josue 
 	//Sine Arguments
 	vrate = 0.19, vrate2 = 0.67, vdepth = 0.007, vdepth2 = 0.01, sineClip = 0.825, 
 	//interferences
-	interference = 1.0;
+	interference = 1.4;
 
 	var noise, snd, snd2, vibrato, vibrato2, mix, dust, sndall;
 
@@ -29,7 +29,7 @@ Original parts by Zé Craum, modified by Bruno Ruviaro, Josh Mitchell and Josue 
 	snd2 = Clip.ar(LFTri.ar(vibrato2), -1 * sineClip, 0.5).softclip;
 	snd2 = (snd2 * (amp / 7));
 	sndall = (snd + snd2);
-	dust = (Dust2.ar(10, 1) + Crackle.ar(1.95, 0.2) + SinOsc.ar((PinkNoise.ar(0.5) * 7500) + 40, 0, 0.02));
+	dust = (Dust2.ar(10, 1) + Crackle.ar(1.95, 0.2) + SinOsc.ar((PinkNoise.ar(0.5) * 7500) + 40, 0, 0.011));
 	dust = HPF.ar(dust, 25);
 	dust = BPF.ar(dust, (hz * 8), 1);
 	dust = ((dust * (interference + noise)) * amp);
