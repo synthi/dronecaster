@@ -1,9 +1,8 @@
 /*
-
 Apparatus by Josue Arias
-Original parts by Zé Craum
-Crude simulation of old sinusoidal generators
-Modified by Bruno Ruviaro, Josh Mitchell and Josue Arias
+Drone simulating old sinusoidal generators
+-
+Original parts by Zé Craum, modified by Bruno Ruviaro, Josh Mitchell and Josue Arias
 
 */
 
@@ -14,7 +13,7 @@ Modified by Bruno Ruviaro, Josh Mitchell and Josue Arias
 	//Sine Arguments
 	vrate = 0.19, vrate2 = 0.67, vdepth = 0.007, vdepth2 = 0.01, sineClip = 0.825, 
 	//interferences
-	interference = 1.2;
+	interference = 1.0;
 
 	var noise, snd, snd2, vibrato, vibrato2, mix, dust, sndall;
 
@@ -32,7 +31,7 @@ Modified by Bruno Ruviaro, Josh Mitchell and Josue Arias
 	sndall = (snd + snd2);
 	dust = (Dust2.ar(10, 1) + Crackle.ar(1.95, 0.2) + SinOsc.ar((PinkNoise.ar(0.5) * 7500) + 40, 0, 0.02));
 	dust = HPF.ar(dust, 25);
-	dust = BPF.ar(dust, (hz * 10), 1);
+	dust = BPF.ar(dust, (hz * 8), 1);
 	dust = ((dust * (interference + noise)) * amp);
 	mix = (sndall + dust);
 	mix = (Decimator.ar(mix, 16000, (noise + 7)) * 0.33) + (mix * 0.67);
